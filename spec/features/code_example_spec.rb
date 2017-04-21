@@ -7,6 +7,7 @@ describe "code example" do
     # So that others can view it.
 
     # [ ] User adds a url to a git repository, and a title.
+    # [ ] User selects at least one technology relevant to this example.
     # [ ] The following files must be present in the repo:
     #   - metadata.json
     #   - index.md
