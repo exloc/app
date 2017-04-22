@@ -19,7 +19,7 @@ describe "technology" do
   end
 
   xdescribe "delete" do
-    # As a exloc user,
+    # As a exloc admin,
     # I want to remove a technology,
     # So that other exloc users aren't shown frivolous tech.
   end
