@@ -1,4 +1,8 @@
 module OmniAuthHelper
+  def sign_in(user)
+    session[:user_id] = user.id
+  end
+
   def mock_omniauth(user, provider)
     auth_hash = {
       provider: provider,

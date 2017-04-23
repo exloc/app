@@ -21,6 +21,9 @@ class User < ApplicationRecord
     end
   end
 
+  has_secure_token
+  has_many :code_examples
+
   validates :provider, inclusion: %w(github)
   validates :uid, presence: true
   validates :role, inclusion: %w(user admin)

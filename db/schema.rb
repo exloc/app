@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422221338) do
+ActiveRecord::Schema.define(version: 20170423161544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "code_examples", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.string   "slug",        null: false
+    t.string   "git"
+    t.string   "name"
+    t.string   "description"
+    t.text     "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["slug"], name: "index_code_examples_on_slug", unique: true, using: :btree
+    t.index ["user_id"], name: "index_code_examples_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",                    null: false
@@ -23,8 +36,10 @@ ActiveRecord::Schema.define(version: 20170422221338) do
     t.string   "name"
     t.string   "avatar_url"
     t.string   "location"
+    t.string   "token"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["token"], name: "index_users_on_token", unique: true, using: :btree
   end
 
 end

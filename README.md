@@ -26,7 +26,7 @@ Create a centralized resource for code examples that are:
 * Test code example instructions: download using curl and vote via the CLI.
 * Add new code examples
   - compose in Markdown (md), site your source(s)
-  - via git repo (include 'content.md', 'metadata.json', and source code files)
+  - via git repo (include 'exloc.json', 'exloc.md', and source code files)
 * Work on features. Specs in the form of user stories are available in the 'features' branch.
 
 # Tech
@@ -42,18 +42,19 @@ Create a centralized resource for code examples that are:
 
 ### CodeExample
 
-#### metadata.json
+#### exloc.json
 
 * name
 * technologies, versions
 * build dependencies (setup script)
 * build commands/script
+* license
 
 #### Fields
 
 * content (in markdown)
 * license_id
-* archive_url
+* git (url)
 
 #### Relationships
 

@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: "auth_failure#index"
   resources :sessions, only: [:new, :create, :destroy]
+
+  resources :ex, controller: :code_examples, only: [:create, :index, :show]
 end

@@ -8,7 +8,10 @@ class AddUsers < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :avatar_url
       t.string :location
+      t.string :token
       t.timestamps null: false
     end
+
+    add_index :users, :token, unique: true
   end
 end

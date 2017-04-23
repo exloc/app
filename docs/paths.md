@@ -8,7 +8,7 @@ GET/POST/PATCH/DELETE exloc.io/auth/auth-service/users/username{.format}
 
 Auth Services:
 
-* [ ] GitHub
+* [x] GitHub
 * [ ] GitLab
 * [ ] BitBucket
 * [ ] Twitter
