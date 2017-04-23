@@ -6,18 +6,9 @@ class User < ApplicationRecord
         user.uid = auth.uid
         user.email = auth.info.email
         user.name = auth.info.name
+        user.avatar_url = auth.info.image
+        user.location = auth.info.location
       end
-    end
-
-    private
-    def admin_params
-      {
-        email: ENV["ADMIN_EMAIL"],
-        password: ENV["ADMIN_PASSWORD"],
-        password_confirmation: ENV["ADMIN_PASSWORD"],
-        role: "admin",
-        name: "Admin"
-      }
     end
   end
 
@@ -37,6 +28,6 @@ class User < ApplicationRecord
   end
 
   def to_s
-    name || email
+    name || email || "user-#{id}"
   end
 end

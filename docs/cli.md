@@ -16,7 +16,7 @@ $ exloc vote
 
 ```no-highlight
 $ curl --request GET \
-    -H "authToken: $EXLOC_TOKEN" \
+    -F "token: $EXLOC_TOKEN" \
     exloc.io/ex/slug.{json,zip,tar.gz,tar.bz2,rar,7z}
 ```
 
@@ -30,7 +30,7 @@ From within a git repo...
 
 ```no-highlight
 $ curl --request POST \
-    -H "authToken: $EXLOC_TOKEN" \
+    -F "token: $EXLOC_TOKEN" \
     -F "git=https://github.com/username/repository" \
     exloc.io/ex
 ```
@@ -43,7 +43,7 @@ Print server response status and body.
 
 ```no-highlight
 $ curl --request PATCH \
-    -H "authToken: $EXLOC_TOKEN" \
+    -F "token: $EXLOC_TOKEN" \
     -F "git=https://github.com/username/repository" \
     exloc.io/ex/slug
 ```
@@ -52,7 +52,7 @@ $ curl --request PATCH \
 
 ```no-highlight
 $ curl --request DELETE \
-    -H "authToken: $EXLOC_TOKEN" \
+    -F "token: $EXLOC_TOKEN" \
     exloc.io/ex/slug
 ```
 
@@ -60,6 +60,6 @@ $ curl --request DELETE \
 
 ```no-highlight
 $ curl --request POST \
-    -H "authToken: $EXLOC_TOKEN" \
+    -F "token: $EXLOC_TOKEN" \
     exloc.io/ex/slug/votes
 ```

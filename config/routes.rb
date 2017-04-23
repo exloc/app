@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get "/auth/failure", to: "auth_failure#index"
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :ex, controller: :code_examples, only: [:create, :index, :show]
+  resources :ex, controller: :code_examples, only: [:create, :index, :show], param: :slug
 end

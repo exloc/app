@@ -1,4 +1,5 @@
 class CodeExamplesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:create]
   before_action :require_user, only: [:create]
 
   def create

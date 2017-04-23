@@ -18,6 +18,10 @@ class CodeExample < ApplicationRecord
     name.present? && content.present?
   end
 
+  def to_param
+    slug
+  end
+
   private
   def git_or_local_example
     if !git_example? && !local_example?
