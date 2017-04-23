@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Exloc</title>
+    <title>
+      <%= content_for?(:title) ? yield(:title) : "Exloc" %>
+    </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -9,6 +11,8 @@
   </head>
 
   <body>
+    <%= render template: "layouts/menu" %>
+    <%= render template: "layouts/flash" %>
     <%= yield %>
   </body>
 </html>

@@ -5,11 +5,13 @@ require 'spec_helper'
 require 'rspec/rails'
 require "capybara/rails"
 require "valid_attribute"
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
 ActiveRecord::Migration.maintain_test_schema!
+OmniAuth.config.test_mode = true
 
 RSpec.configure do |config|
+  config.include AuthenticationHelper
   config.include FactoryGirl::Syntax::Methods
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!

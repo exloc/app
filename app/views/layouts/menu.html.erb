@@ -1,0 +1,28 @@
+<div class="top-bar">
+
+  <div class="row">
+    <div class="small-12 columns">
+
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li>
+            <%= image_tag "logo.png", class: "logo" %>
+          </li>
+          <li class="menu-text">Exloc</li>
+          <li>
+            <%= link_to "Home", root_path %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <%= render template: "layouts/admin" if admin? %>
+          <%= render template: "layouts/auth" %>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>
