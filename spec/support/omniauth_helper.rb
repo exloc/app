@@ -1,7 +1,7 @@
-module AuthenticationHelper
-  def mock_omniauth(user)
+module OmniAuthHelper
+  def mock_omniauth(user, provider)
     auth_hash = {
-      provider: user.provider,
+      provider: provider,
       uid: user.uid,
       info: {
         email: user.email,
@@ -10,6 +10,6 @@ module AuthenticationHelper
       }
     }
 
-    OmniAuth.config.add_mock(user.provider, auth_hash)
+    OmniAuth.config.add_mock(provider, auth_hash)
   end
 end
