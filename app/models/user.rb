@@ -3,11 +3,11 @@ class User < ApplicationRecord
     def from_omniauth(auth)
       case auth[:provider]
       when "github"
-        return GitHubUser.new(auth).to_user
+        return GitHubUser.from_omniauth(auth)
       when "gitlab"
-        return GitLabUser.new(auth).to_user
+        return GitLabUser.from_omniauth(auth)
       when "twitter"
-        return TwitterUser.new(auth).to_user
+        return TwitterUser.from_omniauth(auth)
       else
         raise "Authentication provider not registered: #{auth[:provider]}."
       end

@@ -1,20 +1,12 @@
-class GitLabUser
-  def initialize(auth)
+module GitLabUser
+  def self.from_omniauth(auth)
     @auth = auth
+    user = User.where(uid: @auth[:uid], provider: @auth[:provider]).first_or_initialize
     user.assign_attributes(user_attributes)
+    return user
   end
 
-  def to_user
-    user
-  end
-
-  private
-
-  def user
-    @_user ||= User.where(uid: @auth[:uid], provider: @auth[:provider]).first_or_initialize
-  end
-
-  def user_attributes
+  def self.user_attributes
     {
       name: @auth.info.name,
       nickname: @auth.info.username,
