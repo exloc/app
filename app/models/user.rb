@@ -4,10 +4,12 @@ class User < ApplicationRecord
       where(uid: auth[:uid], provider: auth[:provider]).first_or_initialize.tap do |user|
         user.provider = auth.provider
         user.uid = auth.uid
-        user.email = auth.info.email
         user.name = auth.info.name
-        user.avatar_url = auth.info.image
-        user.location = auth.info.location
+        user.nickname = auth.info.nickname
+        user.email = auth.info.email
+        user.image = auth.info.image
+        user.location = auth&.extra&.raw_info&.location
+        urls = auth.info.urls
       end
     end
   end
@@ -28,6 +30,6 @@ class User < ApplicationRecord
   end
 
   def to_s
-    name || email || "user-#{id}"
+    nickname || name || email || "user-#{id}"
   end
 end

@@ -13,5 +13,5 @@
 !/log/.keep
 !/tmp/.keep
 
-# App-specific files
-.env
+# Configuration files
+.env*

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :ex, controller: :code_examples, only: [:create, :index, :show], param: :slug
+  resources :usr, controller: :users, only: [:show], param: :nickname_provider
 end

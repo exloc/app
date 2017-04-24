@@ -14,11 +14,14 @@ gem "uglifier", ">= 1.3.0"
 gem "coffee-rails", "~> 4.2"
 gem "jquery-rails"
 gem "omniauth-github"
+gem 'omniauth-gitlab'
+gem 'omniauth-twitter'
 # gem "redis", "~> 3.0"
 # gem "bcrypt", "~> 3.1.7"
 
 group :development, :test do
   gem "capybara"
+  gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "launchy", require: false
   gem "pry-rails"

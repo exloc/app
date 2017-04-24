@@ -1,0 +1,47 @@
+{
+  "provider": "gitlab",
+  "uid": "1279823",
+  "info": {
+    "name": "Example Lines of Code",
+    "username": "exloc",
+    "email": "rdavis.bacs+exloc@gmail.com",
+    "image": "https://secure.gravatar.com/avatar/3283fef4579bfdd507fa6e4b08205032?s=80&d=identicon"
+  },
+  "credentials": {
+    "token": "abcd1234",
+    "expires": false
+  },
+  "extra": {
+    "raw_info": {
+      "name": "Example Lines of Code",
+      "username": "exloc",
+      "id": 1279823,
+      "state": "active",
+      "avatar_url": "https://secure.gravatar.com/avatar/3283fef4579bfdd507fa6e4b08205032?s=80&d=identicon",
+      "web_url": "https://gitlab.com/exloc",
+      "created_at": "2017-04-24T01:33:42.568Z",
+      "is_admin": false,
+      "bio": "",
+      "location": "",
+      "skype": "",
+      "linkedin": "",
+      "twitter": "",
+      "website_url": "exloc.io",
+      "organization": "",
+      "last_sign_in_at": "2017-04-24T01:34:10.347Z",
+      "confirmed_at": "2017-04-24T01:33:55.908Z",
+      "last_activity_on": null,
+      "email": "rdavis.bacs+exloc@gmail.com",
+      "color_scheme_id": 1,
+      "projects_limit": 100000,
+      "current_sign_in_at": "2017-04-24T01:34:10.347Z",
+      "identities": [
+
+      ],
+      "can_create_group": true,
+      "can_create_project": true,
+      "two_factor_enabled": false,
+      "external": false
+    }
+  }
+}

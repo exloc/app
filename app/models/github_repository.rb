@@ -34,7 +34,6 @@ class GitHubRepository
   end
 
   def params
-    raise "ENV['GITHUB_ACCESS_TOKEN'] not set!" unless ENV["GITHUB_ACCESS_TOKEN"].present?
-    { access_token: ENV["GITHUB_ACCESS_TOKEN"] }
+    { access_token: ENV["GITHUB_KEY"] }
   end
 end

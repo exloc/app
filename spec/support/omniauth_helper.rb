@@ -8,9 +8,12 @@ module OmniAuthHelper
       provider: provider,
       uid: user.uid,
       info: {
-        email: user.email,
         name: user.name,
-        image: user.avatar_url
+        nickname: user.nickname,
+        email: user.email,
+        image: user.image,
+        location: user.location,
+        urls: user.urls
       }
     }
 

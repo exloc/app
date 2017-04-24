@@ -14,6 +14,14 @@ class CodeExamplesController < ApplicationController
     end
   end
 
+  def index
+    @code_examples = CodeExample.order(created_at: :desc).limit(20)
+  end
+
+  def show
+    @ex = CodeExample.find_by(slug: params[:slug])
+  end
+
   private
   def code_example_params
     params.permit(:git)

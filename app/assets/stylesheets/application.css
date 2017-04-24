@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+@import url(https://fonts.googleapis.com/css?family=Cardo|Josefin+Sans|Inconsolata);
+
+h1, h2, h3, h4, h5, h6 {
+   font-family: Cardo, serif;
+}
+
+body {
+   font-family: "Josefin Sans", sans-serif;
+   color: #646464;
+   background-color: #F6F6F7;
+}
+
+.row {
+  margin: 2% 10%;
+}

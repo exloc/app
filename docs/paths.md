@@ -3,16 +3,14 @@
 ## Users
 
 ```no-highlight
-GET/POST/PATCH/DELETE exloc.io/auth/auth-service/users/username{.format}
+GET/POST/PATCH/DELETE exloc.io/usr/nickname-provider{.format}
 ```
 
-Auth Services:
+Auth Providers:
 
 * [x] GitHub
-* [ ] GitLab
-* [ ] BitBucket
-* [ ] Twitter
-* [ ] Facebook
+* [X] GitLab
+* [x] Twitter
 
 Supported Formats:
 
@@ -36,5 +34,5 @@ Supported Formats:
 ## Voting
 
 ```no-highlight
-POST exloc.io/ex/slug/votes
+POST exloc.io/ex/slug/vote
 ```

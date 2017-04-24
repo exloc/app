@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col">
+    <h2><%= @ex.name %></h2>
+    <p>Submitted by <%= link_to @ex.user, "/path/to/user/profile" %></p>
+    <p>[<%= link_to "details", ex_path(@ex) %>]</p>
+    <p><%= @ex.description %></p>
+    <p><%= @ex.content %></p>
+  </div>
+</div>

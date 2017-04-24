@@ -4,14 +4,17 @@ class AddUsers < ActiveRecord::Migration[5.0]
       t.string :provider, null: false
       t.string :uid, null: false
       t.string :role, default: "user", null: false
-      t.string :email
       t.string :name
-      t.string :avatar_url
+      t.string :nickname
+      t.string :email
+      t.string :image
       t.string :location
-      t.string :token
+      t.json :urls
+      t.string :token, null: false
       t.timestamps null: false
     end
 
+    add_index :users, [:provider, :uid], unique: true
     add_index :users, :token, unique: true
   end
 end

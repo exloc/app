@@ -1,41 +1,24 @@
 <div class="row">
-  <div class="medium-6 medium-centered large-4 large-centered columns">
-    <div class="row">
-     <div class="small-8 small-centered columns">
-        <!--
-        <div>
-          <%= link_to "/auth/facebook", class: "button expanded facebook" do %>
-            <i class="fi-social-facebook"></i>
-            Sign in with Facebook
-          <% end %>
-        </div>
-        -->
+  <div class="col">
+    <div>
+      <%= link_to "/auth/github", class: "button expanded github" do %>
+        <i class="fi-social-github"></i>
+        Sign in with GitHub
+      <% end %>
+    </div>
 
-        <div>
-          <%= link_to "/auth/github", class: "button expanded github" do %>
-            <i class="fi-social-github"></i>
-            Sign in with GitHub
-          <% end %>
-        </div>
+    <div>
+      <%= link_to "/auth/gitlab", class: "alert button expanded google" do %>
+        <i class="fi-social-google-plus"></i>
+        Sign in with GitLab
+      <% end %>
+    </div>
 
-        <!--
-        <div>
-          <%= link_to "/auth/google_oauth2", class: "alert button expanded google" do %>
-            <i class="fi-social-google-plus"></i>
-            Sign in with Google
-          <% end %>
-        </div>
-        -->
-
-        <!--
-        <div>
-          <%= link_to "/auth/twitter", class: "button expanded twitter" do %>
-            <i class="fi-social-twitter"></i>
-            Sign in with Twitter
-          <% end %>
-        </div>
-        -->
-      </div>
+    <div>
+      <%= link_to "/auth/twitter", class: "button expanded twitter" do %>
+        <i class="fi-social-twitter"></i>
+        Sign in with Twitter
+      <% end %>
     </div>
   </div>
 </div>

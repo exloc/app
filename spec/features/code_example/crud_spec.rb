@@ -29,6 +29,37 @@ describe "code example" do
     # [ ] Form is re-rendered with errors if unsuccessful.
   end
 
+  describe "read" do
+    it "shows an index page of code examples" do
+      user = create(:user)
+      ex = CodeExample.create(
+        name: "Ruby",
+        description: "An example in Ruby.",
+        content: "puts 'Hello World'",
+        user: user
+      )
+
+      ex2 = CodeExample.create(
+        name: "JavaScript",
+        description: "An example in JavaScript.",
+        content: "console.log('Hello World')",
+        user: user
+      )
+      
+      ex3 = CodeExample.create(
+        name: "Golang",
+        description: "An example in Ruby.",
+        content: "fmt.Println('Hello World')",
+        user: user
+      )
+
+      visit ex_index_path
+      expect(page).to have_content("Ruby")
+      expect(page).to have_content("JavaScript")
+      expect(page).to have_content("Golang")
+    end
+  end
+
   xdescribe "update" do
     # As a exloc user,
     # I want to edit a code example I have created,

@@ -1,0 +1,17 @@
+<% @code_examples.each do |ex| %>
+  <div class="row">
+    <div class="col">
+      <hr />
+      <h2><%= ex.name %></h2>
+      <p>Submitted by <%= link_to ex.user, "/path/to/user/profile" %></p>
+      <p>[<%= link_to "details", ex_path(ex) %>]</p>
+      <p><%= ex.description %></p>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col">
+    <hr />
+  </div>
+</div>
