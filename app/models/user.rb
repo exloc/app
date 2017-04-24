@@ -1,23 +1,15 @@
 class User < ApplicationRecord
   class << self
     def from_omniauth(auth)
-      # user = where(uid: auth[:uid], provider: auth[:provider]).first_or_initialize
       case auth[:provider]
       when "github"
-        return GitHubUser.new(auth)
+        return GitHubUser.new(auth).to_user
       when "gitlab"
-        return GitLabUser.new(auth)
+        return GitLabUser.new(auth).to_user
       when "twitter"
-        return TwitterUser.new(auth)
-      end
-
-      user.tap do |user|
-        user.name = auth.info.name
-        user.nickname = auth.info.nickname
-        user.email = auth.info.email
-        user.image = auth.info.image
-        user.location = auth&.extra&.raw_info&.location
-        urls = auth.info.urls
+        return TwitterUser.new(auth).to_user
+      else
+        raise "Authentication provider not registered: #{auth[:provider]}."
       end
     end
   end
@@ -31,6 +23,10 @@ class User < ApplicationRecord
 
   def admin?
     role == "admin"
+  end
+
+  def new_account?
+    created_at == updated_at
   end
 
   def to_s

@@ -8,8 +8,8 @@ A module for managing environmental variables.
 
 Integration of a new service will leave other developers with a breaking build.
 Inevitably, someone will miss the IRC announcement to generate and add the
-YahooCode API keys to their local dev environment. Instead of blowing up, the
-codebase should return a clear and actionable message.
+YahooCode API keys to their local dev environment. Instead of blowing up with a
+cryptic message, the codebase should return a clear and actionable message.
 
 ## Solution
 
@@ -22,6 +22,8 @@ codebase should return a clear and actionable message.
 MARKDOWN
 
 module Keyring
+  DOTENV_FILE = Rails.root.join(".env")
+
   KEYS = %w(
     PORT
     GITHUB_KEY
@@ -37,8 +39,7 @@ module Keyring
       raise "ENV['#{key}'] not set!" unless ENV[key].present?
     end
 
-    dotenv_file = Rails.root.join(".env")
-    keys = File.readlines(dotenv_file).map { |k| k.split("=").first }
+    keys = File.readlines(DOTENV_FILE).map { |k| k.split("=").first }
     keys.each do |key|
       warn "Please document '#{key}' in Keyring::KEYS" unless KEYS.include?(key)
     end

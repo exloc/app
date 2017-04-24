@@ -5,13 +5,11 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(request.env["omniauth.auth"])
     if user.save
-      # send_welcome_email(user) if user.is_new_account?
+      # send_welcome_email(user) if user.new_account?
       session[:user_id] = user.id
-      suffix = user.to_s ? ", #{user}" : ""
-      flash[:success] = "Welcome back#{suffix}!"
+      flash[:success] = "Welcome back, #{user}!"
     else
-      provider_name = params[:provider].titleize
-      flash[:error] = "There was a problem authenticating via #{provider_name}."
+      flash[:error] = "There was a problem authenticating via #{params[:provider]}."
     end
     redirect_to root_path
   end
