@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gridly/1.4.10/gridly.min.css">
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js" integrity="sha256-mJAzKDq6kSoKqZKnA6UNLtPaIj8zT2mFnWu/GSouhgQ=" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application' %>
   </head>
 
@@ -15,5 +16,9 @@
     <%= render template: "layouts/menu" %>
     <%= render template: "layouts/flash" %>
     <%= yield %>
+
+    <script>
+      <%= yield :javascript %>
+    </script>
   </body>
 </html>

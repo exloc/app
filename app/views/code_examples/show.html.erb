@@ -4,6 +4,13 @@
     <p>Submitted by <%= link_to @ex.user, "/path/to/user/profile" %></p>
     <p>[<%= link_to "details", ex_path(@ex) %>]</p>
     <p><%= @ex.description %></p>
-    <p><%= @ex.content %></p>
+    <xmp id="ex-markdown-content" style="display:none;"><%= @ex.content %></xmp>
+    <p id="ex-markup-content"></p>
   </div>
 </div>
+
+<% content_for :javascript do %>
+  let markdown = document.getElementById('ex-markdown-content').innerHTML
+  let markup = marked(markdown)
+  document.getElementById('ex-markup-content').innerHTML = markup
+<% end %>

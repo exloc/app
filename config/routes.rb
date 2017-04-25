@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root "home#index"
-  resources :home, only: [:index]
+  root "code_examples#index"
+  # resources :home, only: [:index]
 
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: "auth_failure#index"
