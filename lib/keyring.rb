@@ -17,13 +17,14 @@ cryptic message, the codebase should return a clear and actionable message.
 * run `.check` early in your application (after `dotenv.load`).
   - alert if ENV keys don't match KEYS (msg: update .env)
   - alert if .env keys don't match KEYS (msg: update KEYS)
-* `.export` a new .env.example file
+* run `.export` to create a new .env.example file
 
 MARKDOWN
 
 module Keyring
   KEYS = %w(
     PORT
+    GITHUB_API_TOKEN
     GITHUB_KEY
     GITHUB_SECRET
     GITLAB_KEY

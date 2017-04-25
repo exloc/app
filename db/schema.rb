@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2) do
     t.integer  "user_id",     null: false
     t.string   "slug",        null: false
     t.string   "git"
+    t.json     "metadata"
     t.string   "name"
     t.string   "description"
     t.text     "content"

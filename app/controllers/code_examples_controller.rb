@@ -7,6 +7,7 @@ class CodeExamplesController < ApplicationController
     code_example.user = current_user
 
     if code_example.save
+      CodeExampleImportJob.perform_later(code_example.id)
       response.headers["Location"] = ex_url(code_example)
       render plain: "New Exloc created @ #{ex_url(code_example)}", status: :created
     else

@@ -9,6 +9,8 @@ $ exloc get ex-slug
 $ exloc post
 $ exloc patch
 $ exloc delete
+$ exloc browse slug
+$ exloc search keyword
 $ exloc vote
 ```
 
@@ -16,7 +18,7 @@ $ exloc vote
 
 ```no-highlight
 $ curl --request GET \
-    -F "token: $EXLOC_TOKEN" \
+    -F "token=$EXLOC_TOKEN" \
     exloc.io/ex/slug.{json,zip,tar.gz,tar.bz2,rar,7z}
 ```
 
@@ -30,7 +32,7 @@ From within a git repo...
 
 ```no-highlight
 $ curl --request POST \
-    -F "token: $EXLOC_TOKEN" \
+    -F "token=$EXLOC_TOKEN" \
     -F "git=https://github.com/username/repository" \
     exloc.io/ex
 ```
@@ -43,7 +45,7 @@ Print server response status and body.
 
 ```no-highlight
 $ curl --request PATCH \
-    -F "token: $EXLOC_TOKEN" \
+    -F "token=$EXLOC_TOKEN" \
     -F "git=https://github.com/username/repository" \
     exloc.io/ex/slug
 ```
@@ -52,14 +54,22 @@ $ curl --request PATCH \
 
 ```no-highlight
 $ curl --request DELETE \
-    -F "token: $EXLOC_TOKEN" \
+    -F "token=$EXLOC_TOKEN" \
     exloc.io/ex/slug
 ```
+
+## browse slug
+
+Visit the exloc url in the browser. Optional slug argument.
+
+## search {keyword}
+
+Returns a list of the ten best matches for a search.
 
 ## vote
 
 ```no-highlight
 $ curl --request POST \
-    -F "token: $EXLOC_TOKEN" \
+    -F "token=$EXLOC_TOKEN" \
     exloc.io/ex/slug/votes
 ```

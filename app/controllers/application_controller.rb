@@ -15,11 +15,15 @@ class ApplicationController < ActionController::Base
   end
 
   def session_auth
-    User.find(session[:user_id]) if session[:user_id].present?
+    @_user ||= User.find(session[:user_id]) if session[:user_id].present?
   end
 
   def token_auth
-    User.find_by(token: params[:token]) if params[:token].present?
+    @_user ||= User.find_by(token: token_auth_params[:token]) if token_auth_params.present?
+  end
+
+  def token_auth_params
+    params.permit(:token)
   end
 
   def current_user
