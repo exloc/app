@@ -3,7 +3,6 @@ class CodeExampleImportJob < ApplicationJob
 
   def perform(code_example_id)
     ex = CodeExample.find(code_example_id)
-    binding.pry
     if ex.git_example? && ex.git.include?("github.com")
       repo = GitHubRepository.new(ex.git)
       # add metadata (exloc.json) and content (exloc.md)
