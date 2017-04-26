@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   def require_user
     return current_user if current_user
+    not_found
+  end
+
+  def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
 

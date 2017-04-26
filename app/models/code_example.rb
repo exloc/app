@@ -14,6 +14,10 @@ class CodeExample < ApplicationRecord
     return URI(git) if git_example?
   end
 
+  def github_example?
+    git_example? && ex.git.include?("github.com")
+  end
+
   def local_example?
     name.present? && content.present?
   end

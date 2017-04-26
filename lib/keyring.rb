@@ -31,6 +31,8 @@ module Keyring
     GITLAB_SECRET
     TWITTER_KEY
     TWITTER_SECRET
+    LETS_ENCRYPT_KEY
+    LETS_ENCRYPT_SECRET
   )
 
   def self.check

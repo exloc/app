@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "code_examples#index"
   # resources :home, only: [:index]
+  # resources :lets_encrypt, only: [:show]
+  get "/.well-known/acme-challenge/:id", to: "lets_encrypt#show"
 
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: "auth_failure#index"
