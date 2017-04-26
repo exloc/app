@@ -13,14 +13,26 @@ class GitHubRepository
 
   def content
     return file_content("exloc.md") if files.include?("exloc.md")
+    return file_content("README.md") if files.include?("README.md")
   end
 
   def metadata
-    return file_content("exloc.json") if files.include?("exloc.json")
+    @_metadata ||= file_content("exloc.json") if files.include?("exloc.json")
+    @_metadata ||= {}
+    return JSON.parse(@_metadata)
   end
 
   def to_s
     "Exloc::GitHubRepository{owner:#{@owner},name:#{@name}}"
+  end
+
+  def to_code_example_params
+    {
+      name: metadata["name"],
+      description: metadata["description"],
+      metadata: metadata,
+      content: content
+    }
   end
 
   private
@@ -40,25 +52,29 @@ class GitHubRepository
 
   def file_content(filename)
     uri = file_uri(filename)
-    @_file_content_response ||= get(uri)
-    json = JSON.parse(@_file_content_response.body)
+    response ||= get(uri)
+    json = JSON.parse(response.body)
     return Base64.decode64(json["content"])
   end
 
+  def host
+    "https://api.github.com"
+  end
+
   def repo_uri
-    uri = URI("https://api.github.com/repos/#{owner}/#{name}")
+    uri = URI("#{host}/repos/#{owner}/#{name}")
     uri.query = URI.encode_www_form(params)
     uri
   end
 
   def files_uri
-    uri = URI("https://api.github.com/repos/#{owner}/#{name}/contents")
+    uri = URI("#{host}/repos/#{owner}/#{name}/contents")
     uri.query = URI.encode_www_form(params)
     uri
   end
 
   def file_uri(path)
-    uri = URI("https://api.github.com/repos/#{owner}/#{name}/contents/#{path}")
+    uri = URI("#{host}/repos/#{owner}/#{name}/contents/#{path}")
     uri.query = URI.encode_www_form(params)
     uri
   end

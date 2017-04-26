@@ -4,14 +4,22 @@ Written in bash/shell. Takes advantage of curl to make Web API requests.
 
 ## Example Usage
 
+CRUD actions:
+
 ```no-highlight
-$ exloc get ex-slug
-$ exloc post
-$ exloc patch
-$ exloc delete
-$ exloc browse slug
+$ exloc get ex-slug  # download an example
+$ exloc post         # create an example
+$ exloc patch        # update an example
+$ exloc delete slug  # delete an example
+```
+
+Other functionality:
+
+```no-highlight
+$ exloc new name     # start a new exloc repo
+$ exloc browse slug  # open example in the browser
 $ exloc search keyword
-$ exloc vote
+$ exloc vote slug
 ```
 
 ## get

@@ -2,15 +2,39 @@ require "rails_helper"
 
 describe CodeExamplesController do
   let(:user) { create(:user) }
-  before { allow(CodeExampleImportJob).to receive(:perform_later).and_return(true) }
 
   xdescribe "GET /ex"
-  xdescribe "GET /ex/:slug"
+
+  describe "GET /ex/:slug" do
+    let(:ex) do
+      CodeExample.create({
+        name: "JavaScript print to console example",
+        git: "https://github.com/exloc/js-console-log",
+        content: "```js\nconsole.log('Hello World')\n```",
+        user: user
+      })
+    end
+
+    it "defaults to the html representation of the code example" do
+      get :show, params: { slug: ex.slug, token: user.token }
+      expect(response.content_type).to eq("text/html")
+    end
+
+    xit "supports the gzip representation of the code example" do
+    pending "not yet implemented"
+      get :show,
+        params: { slug: ex.slug, token: user.token },
+        headers: { "Content-Type" => "application/gzip" }
+      expect(response.content_type).to eq("application/gzip")
+    end
+  end
 
   describe "POST /ex" do
+    before { allow(CodeExampleImportJob).to receive(:perform_later).and_return(true) }
+
     it "accepts a remote git repository" do
       post :create, params: {
-        git: "https://github.com/exloc/exloc-example",
+        git: "https://github.com/exloc/example",
         token: user.token
       }
 
@@ -21,7 +45,7 @@ describe CodeExamplesController do
     it "requires token auth" do
       expect {
         post :create, params: {
-          git: "https://github.com/exloc/exloc-example",
+          git: "https://github.com/exloc/example",
           token: ""
         }
       }.to raise_error(ActionController::RoutingError, "Not Found")
@@ -39,7 +63,7 @@ describe CodeExamplesController do
 
     it "creates a new CodeExampleImportJob" do
       post :create, params: {
-        git: "https://github.com/exloc/exloc-example",
+        git: "https://github.com/exloc/example",
         token: user.token
       }
 

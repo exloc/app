@@ -5,3 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+admin_params = {
+  provider: "github",
+  uid: "1299034"
+}
+
+admin = User.find_or_initialize_by(admin_params)
+admin.role = "admin"
+admin.save!
+
+
+exlocs = %w(
+  https://github.com/exloc/example
+  https://github.com/exloc/parse-mailto-with-regex
+  https://github.com/radavis/local-events
+  https://github.com/radavis/hosts
+  https://github.com/radavis/github-card
+  https://github.com/radavis/foundation-cdn-boilerplate
+)
+
+exlocs.each do |exloc|
+  ex = CodeExample.find_or_create_by(git: exloc)
+  ex.user = admin
+  ex.save!
+  CodeExampleImportJob.perform_now(ex.slug)
+end
