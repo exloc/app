@@ -1,16 +1,8 @@
 class User < ApplicationRecord
   class << self
-    def from_omniauth(auth)
-      case auth[:provider]
-      when "github"
-        return GitHubUser.from_omniauth(auth)
-      when "gitlab"
-        return GitLabUser.from_omniauth(auth)
-      when "twitter"
-        return TwitterUser.from_omniauth(auth)
-      else
-        raise "Authentication provider not registered: #{auth[:provider]}."
-      end
+    def from_param(nickname_provider)
+      n, p = nickname_provider.split("-", 2)
+      find_by!(nickname: n, provider: p)
     end
   end
 
@@ -29,7 +21,15 @@ class User < ApplicationRecord
     created_at == updated_at
   end
 
+  def to_param
+    "#{nickname}-#{provider}"
+  end
+
   def to_s
-    nickname || name || email || "user-#{id}"
+    if nickname.present? && provider.present?
+      return "#{nickname}/#{provider}"
+    else
+      return "user-#{id}"
+    end
   end
 end

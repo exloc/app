@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 3) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 2) do
     t.datetime "updated_at",  null: false
     t.index ["slug"], name: "index_code_examples_on_slug", unique: true, using: :btree
     t.index ["user_id"], name: "index_code_examples_on_user_id", using: :btree
+  end
+
+  create_table "files", force: :cascade do |t|
+    t.integer "code_example_id", null: false
+    t.string  "name",            null: false
+    t.jsonb   "data"
+    t.index ["code_example_id"], name: "index_files_on_code_example_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

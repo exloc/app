@@ -4,7 +4,7 @@ class CodeExampleImportJob < ApplicationJob
   def perform(code_example_slug)
     ex = CodeExample.find_by(slug: code_example_slug)
     if ex.github_example?
-      ex_params = GitHubRepository.new(ex.git).to_code_example_params
+      ex = GitHub::Repository.new(ex.git).to_code_example_params
       ex.assign_attributes(ex_params)
       ex.save!
     # elsif ex.git_example? && ex.git.include?("bitbucket.com")

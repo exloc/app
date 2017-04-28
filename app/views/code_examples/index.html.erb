@@ -3,7 +3,7 @@
     <div class="col">
       <hr />
       <h2><%= ex.name %></h2>
-      <p>Submitted by <%= link_to ex.user, "/path/to/user/profile" %></p>
+      <p>Submitted by <%= link_to ex.user, usr_path(ex.user) %></p>
       <p>[<%= link_to "details", ex_path(ex) %>]</p>
       <p><%= ex.description %></p>
     </div>

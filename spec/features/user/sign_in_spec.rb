@@ -4,7 +4,7 @@ describe "sign in" do
   xdescribe "past oauth service utilized is highlighted"
 
   describe "via github" do
-    let!(:user) { build(:user) }
+    let!(:user) { build(:user, nickname: 'billnye') }
     after { OmniAuth.config.mock_auth[:github] = nil }
 
     describe "successfully" do
@@ -14,7 +14,7 @@ describe "sign in" do
         visit new_session_path
         click_on "Sign in with GitHub"
 
-        expect(page).to have_content "Welcome back, #{user}!"
+        expect(page).to have_content "Welcome back, billnye/github!"
         expect(page).to have_link "Sign Out"
       end
     end

@@ -1,9 +1,14 @@
 class CodeExample < ApplicationRecord
   belongs_to :user
+  has_many :files, dependent: :destroy
+  accepts_nested_attributes_for :files
 
   before_create :generate_unique_slug
 
   validates :user, presence: true
+  validates :git,
+    format: { with: URI::regexp(%w(http https)) },
+    allow_nil: true
   validate :git_or_local_example
 
   def git_example?
