@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe AuthenticationService do
+describe Authentication do
   describe "#user" do
     it "authenticates a github user" do
       json_file = Rails.root.join("docs", "authentication", "github.json")
@@ -8,7 +8,7 @@ describe AuthenticationService do
       hash = JSON.parse(json)
       auth_hash = OmniAuth::AuthHash.new(hash)
 
-      user = AuthenticationService.new(auth_hash).user
+      user = Authentication.new(auth_hash).user
 
       expect(user.provider).to eq("github")
       expect(user.uid).to eq("1299034")
@@ -26,7 +26,7 @@ describe AuthenticationService do
       hash = JSON.parse(json)
       auth_hash = OmniAuth::AuthHash.new(hash)
 
-      user = AuthenticationService.new(auth_hash).user
+      user = Authentication.new(auth_hash).user
 
       expect(user.provider).to eq("gitlab")
       expect(user.uid).to eq("1279823")
@@ -44,7 +44,7 @@ describe AuthenticationService do
       hash = JSON.parse(json)
       auth_hash = OmniAuth::AuthHash.new(hash)
 
-      user = AuthenticationService.new(auth_hash).user
+      user = Authentication.new(auth_hash).user
 
       expect(user.provider).to eq("twitter")
       expect(user.uid).to eq("855574946692702208")

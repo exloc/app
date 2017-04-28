@@ -1,3 +1,5 @@
+OmniAuth.config.test_mode = true
+
 module OmniAuthHelper
   def sign_in(user)
     session[:user_id] = user.id

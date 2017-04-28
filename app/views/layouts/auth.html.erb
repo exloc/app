@@ -1,6 +1,6 @@
 <% if current_user %>
   <li>
-    <%= link_to root_path do %>
+    <%= link_to usr_path(current_user) do %>
       Signed in as <%= current_user %>
     <% end %>
   </li>

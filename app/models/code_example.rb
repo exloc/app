@@ -20,7 +20,7 @@ class CodeExample < ApplicationRecord
   end
 
   def github_example?
-    git_example? && ex.git.include?("github.com")
+    git_example? && git.include?("github.com")
   end
 
   def local_example?
@@ -29,6 +29,19 @@ class CodeExample < ApplicationRecord
 
   def to_param
     slug
+  end
+
+  def import_from_api
+    if ex.github_example?
+      logger.info "Importing #{ex.git}"
+      ex_attrs = GitHub::Repository.new(ex.git).to_code_example_attributes
+      ex.assign_attributes(ex_attrs)
+      ex.save!
+    # elsif ex.gitlab_example?
+      # import from gitlab
+    else
+      logger.info "#{code_example_slug} is not an importable git example. Skipping..."
+    end
   end
 
   private

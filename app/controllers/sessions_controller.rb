@@ -3,13 +3,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    auth_service = AuthenticationService.new(auth)
-    if auth_service.user.save
+    user = Authentication.new(auth_params).user
+    if user.save
       # send_welcome_email(user) if user.new_account?
-      session[:user_id] = auth_service.user.id
-      flash[:success] = "Welcome back, #{auth_service.user}!"
+      session[:user_id] = user.id
+      flash[:success] = "Welcome back, #{user}!"
     else
-      flash[:error] = "There was a problem authenticating via #{auth_service.provider}."
+      flash[:error] = "There was a problem authenticating via #{auth_params['provider']}."
     end
     redirect_to root_path
   end
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   private
-  def auth
+  def auth_params
     request.env["omniauth.auth"]
   end
 end

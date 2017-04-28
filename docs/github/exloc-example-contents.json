@@ -1,0 +1,66 @@
+[
+  {
+    "name": "README.md",
+    "path": "README.md",
+    "sha": "c19b4f51d5075cefec871e5811d358b65c95fc32",
+    "size": 917,
+    "url": "https://api.github.com/repos/exloc/example/contents/README.md?ref=master",
+    "html_url": "https://github.com/exloc/example/blob/master/README.md",
+    "git_url": "https://api.github.com/repos/exloc/example/git/blobs/c19b4f51d5075cefec871e5811d358b65c95fc32",
+    "download_url": "https://raw.githubusercontent.com/exloc/example/master/README.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/exloc/example/contents/README.md?ref=master",
+      "git": "https://api.github.com/repos/exloc/example/git/blobs/c19b4f51d5075cefec871e5811d358b65c95fc32",
+      "html": "https://github.com/exloc/example/blob/master/README.md"
+    }
+  },
+  {
+    "name": "exloc.json",
+    "path": "exloc.json",
+    "sha": "330a83615994bcfdba70f13a5cd9d019026f6b20",
+    "size": 221,
+    "url": "https://api.github.com/repos/exloc/example/contents/exloc.json?ref=master",
+    "html_url": "https://github.com/exloc/example/blob/master/exloc.json",
+    "git_url": "https://api.github.com/repos/exloc/example/git/blobs/330a83615994bcfdba70f13a5cd9d019026f6b20",
+    "download_url": "https://raw.githubusercontent.com/exloc/example/master/exloc.json",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/exloc/example/contents/exloc.json?ref=master",
+      "git": "https://api.github.com/repos/exloc/example/git/blobs/330a83615994bcfdba70f13a5cd9d019026f6b20",
+      "html": "https://github.com/exloc/example/blob/master/exloc.json"
+    }
+  },
+  {
+    "name": "exloc.md",
+    "path": "exloc.md",
+    "sha": "af69bb4b4977afd7089a5397d3c7bb83d4bfeeed",
+    "size": 314,
+    "url": "https://api.github.com/repos/exloc/example/contents/exloc.md?ref=master",
+    "html_url": "https://github.com/exloc/example/blob/master/exloc.md",
+    "git_url": "https://api.github.com/repos/exloc/example/git/blobs/af69bb4b4977afd7089a5397d3c7bb83d4bfeeed",
+    "download_url": "https://raw.githubusercontent.com/exloc/example/master/exloc.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/exloc/example/contents/exloc.md?ref=master",
+      "git": "https://api.github.com/repos/exloc/example/git/blobs/af69bb4b4977afd7089a5397d3c7bb83d4bfeeed",
+      "html": "https://github.com/exloc/example/blob/master/exloc.md"
+    }
+  },
+  {
+    "name": "hello.js",
+    "path": "hello.js",
+    "sha": "1e2e7be215a474d90dd0daf2bc9e368694fec353",
+    "size": 28,
+    "url": "https://api.github.com/repos/exloc/example/contents/hello.js?ref=master",
+    "html_url": "https://github.com/exloc/example/blob/master/hello.js",
+    "git_url": "https://api.github.com/repos/exloc/example/git/blobs/1e2e7be215a474d90dd0daf2bc9e368694fec353",
+    "download_url": "https://raw.githubusercontent.com/exloc/example/master/hello.js",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/exloc/example/contents/hello.js?ref=master",
+      "git": "https://api.github.com/repos/exloc/example/git/blobs/1e2e7be215a474d90dd0daf2bc9e368694fec353",
+      "html": "https://github.com/exloc/example/blob/master/hello.js"
+    }
+  }
+]

@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-admin_params = {
+admin_attributes = {
   provider: "github",
   uid: "1299034"
 }
 
-admin = User.find_or_initialize_by(admin_params)
+admin = User.find_or_initialize_by(admin_attributes)
 admin.role = "admin"
 admin.save!
 

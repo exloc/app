@@ -4,7 +4,7 @@ module Twitter
       @auth = auth
     end
 
-    def to_hash
+    def to_user_attributes
       {
         name: auth.info.name,
         nickname: auth.info.nickname,

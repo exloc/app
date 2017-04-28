@@ -4,10 +4,11 @@ class AddCodeExamples < ActiveRecord::Migration[5.0]
       t.belongs_to :user, null: false
       t.string :slug, null: false
       t.string :git
-      t.json :metadata
       t.string :name
       t.string :description
       t.text :content
+      t.jsonb :exloc_metadata
+      t.jsonb :repository_metadata
       t.timestamps null: false
     end
 

@@ -1,14 +1,13 @@
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path("../../config/environment", __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'spec_helper'
-require 'rspec/rails'
+require "spec_helper"
+require "rspec/rails"
 require "capybara/rails"
 require "valid_attribute"
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |file| require file }
 
 ActiveRecord::Migration.maintain_test_schema!
-OmniAuth.config.test_mode = true
 
 RSpec.configure do |config|
   config.include OmniAuthHelper
