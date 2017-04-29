@@ -1,3 +1,5 @@
+# require "open-uri"
+
 namespace :github do
   desc "get public data for a user"
   task :user do
@@ -22,20 +24,19 @@ namespace :github do
     username, repo = ENV["NAME"]&.split("/")
     raise "Try: `rake github:tarball NAME=exloc/example`" unless username && repo
 
-    uri = URI("https://api.github.com/repos/#{username}/#{repo}/tarball/master")
     options = { access_token: ENV["GITHUB_API_TOKEN"] }
+    uri = URI("https://api.github.com/repos/#{username}/#{repo}/tarball/master")
     uri.query = URI.encode_www_form(options)
     response = Net::HTTP.get_response(uri)
 
-    location = response['Location']
+    # uri = "#{response['Location']}?access_token=#{ENV["GITHUB_API_TOKEN"]}"
+    uri = response["Location"]
     filename = "#{username}-#{repo}.#{ext}"
-    # File.write(filename, open(location).read)
-    File.open(filename, "wb") do |file|
-      open(location, "rb") do |tarball|
-        file.write(tarball.read)
-      end
+    open(filename, "wb") do |file|
+      file << open(uri).read
     end
     puts(File.exist?(filename) ? "'#{filename}' created" : "Error creating file '#{filename}'")
+    # should test that file size matches what the API tells us
   end
 end
 

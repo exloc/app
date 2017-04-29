@@ -11,3 +11,11 @@ and be machine reproducible.
 * [ ] Show page for code_examples
 * [ ] Search
 * [ ] Minimal styling
+
+
+## GET code example from CLI
+
+* pass url of file to client?
+* download file through exloc?
+  - file hosting?
+  - [x] passthrough to github?

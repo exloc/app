@@ -13,5 +13,6 @@
 !/log/.keep
 !/tmp/.keep
 
-# Configuration files
+# Other files
 .env*
+*.tar.gz

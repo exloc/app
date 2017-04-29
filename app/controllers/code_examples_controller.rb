@@ -27,8 +27,8 @@ class CodeExamplesController < ApplicationController
       end
 
       # http://stackoverflow.com/a/33244464/2675670
-      # format.zip do
-      #   GitHub::API::get_attributes(:tarball, { owner: ex.owner, repo: ex.repo_name })
+      # format.gz do
+      #   GitHub::API::path(:tarball, { owner: ex.owner, repo: ex.repo_name })
       #   /repos/:owner/:repo/{tarball,zipball}/:ref
       #   file_data = open(url)
       #   send_data(file_data, type: file_data.content_type)
