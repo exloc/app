@@ -29,4 +29,8 @@ code_example.files.{build,create}(file_params)
 
 Possibly use a Struct to convert from JSON format to AR format.
 
-Idea: classes that map data from one format to another. 
+Idea: classes that map data from one format to another.
+
+## Serve Files
+
+[example](http://stackoverflow.com/a/15028162/2675670)

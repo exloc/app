@@ -1,7 +1,7 @@
 class CodeExample < ApplicationRecord
   belongs_to :user
-  has_many :files, dependent: :destroy
-  accepts_nested_attributes_for :files
+  has_many :file_objects, dependent: :destroy
+  accepts_nested_attributes_for :file_objects
 
   before_create :generate_unique_slug
 
@@ -32,15 +32,15 @@ class CodeExample < ApplicationRecord
   end
 
   def import_from_api
-    if ex.github_example?
-      logger.info "Importing #{ex.git}"
-      ex_attrs = GitHub::Repository.new(ex.git).to_code_example_attributes
-      ex.assign_attributes(ex_attrs)
-      ex.save!
+    if github_example?
+      logger.info "Importing #{git}"
+      attrs = GitHub::Repository.new(git).to_code_example_attributes
+      assign_attributes(attrs)
+      save!
     # elsif ex.gitlab_example?
       # import from gitlab
     else
-      logger.info "#{code_example_slug} is not an importable git example. Skipping..."
+      logger.info "#{slug} is not an importable git example. Skipping..."
     end
   end
 

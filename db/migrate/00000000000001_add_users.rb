@@ -9,7 +9,7 @@ class AddUsers < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :image
       t.string :location
-      t.jsonb :urls
+      t.jsonb :urls, null: false, default: "[]"
       t.string :token, null: false
       t.timestamps null: false
     end

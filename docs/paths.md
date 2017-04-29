@@ -9,7 +9,7 @@ GET/POST/PATCH/DELETE exloc.io/usr/nickname-provider{.format}
 Auth Providers:
 
 * [x] GitHub
-* [X] GitLab
+* [x] GitLab
 * [x] Twitter
 
 Supported Formats:
@@ -26,7 +26,7 @@ GET/POST/PATCH/DELETE exloc.io/ex/slug{.format}
 
 Supported Formats:
 
-* [ ] html
+* [x] html
 * [ ] {zip,tar.gz,tar.bz2,rar}
 * [ ] json
 * [ ] git url(?)

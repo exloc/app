@@ -15,7 +15,8 @@ module GitHub
         description: exloc_metadata["description"] || data["description"],
         exloc_metadata: exloc_metadata,
         repository_metadata: data,
-        content: exloc_content  # exloc.md || README.md
+        content: exloc_content,  # exloc.md || README.md
+        file_objects_attributes: file_objects_attributes
       }
     end
 
@@ -36,12 +37,10 @@ module GitHub
     end
 
     def data
-      path = GitHub::API::path()
       @_data ||= GitHub::API::get_attributes(:repo, { owner: owner, repo: name })
     end
 
     def files
-      path = GitHub::API::path()
       @_files ||= GitHub::API::get_attributes(:files, { owner: owner, repo: name })
     end
 
@@ -62,6 +61,17 @@ module GitHub
     def file_content(filename)
       attrs = GitHub::API::get_attributes(:file, { owner: owner, repo: name, file: filename })
       Base64.decode64(attrs["content"])
+    end
+
+    def file_objects_attributes
+      files.map do |file|
+        {
+          name: file["name"],
+          size: file["size"],
+          file_type: file["type"],
+          url: file["download_url"]
+        }
+      end
     end
   end
 end

@@ -3,7 +3,9 @@ require "rails_helper"
 describe CodeExamplesController do
   let(:user) { create(:user) }
 
-  xdescribe "GET /ex"
+  describe "GET /ex" do
+
+  end
 
   describe "GET /ex/:slug" do
     let(:ex) do

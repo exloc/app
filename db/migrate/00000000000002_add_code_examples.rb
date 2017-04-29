@@ -7,8 +7,8 @@ class AddCodeExamples < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :description
       t.text :content
-      t.jsonb :exloc_metadata
-      t.jsonb :repository_metadata
+      t.jsonb :exloc_metadata, null: false, default: "{}"
+      t.jsonb :repository_metadata, null: false, default: "{}"
       t.timestamps null: false
     end
 

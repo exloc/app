@@ -7,6 +7,7 @@ and be machine reproducible.
 * [x] Sign In w/ GitHub
 * [x] POST code example from CLI
 * [ ] GET code example from CLI
-* [x] Index and show pages for code_examples
+* [x] Index page for code_examples
+* [ ] Show page for code_examples
 * [ ] Search
 * [ ] Minimal styling

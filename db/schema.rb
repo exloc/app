@@ -16,25 +16,27 @@ ActiveRecord::Schema.define(version: 3) do
   enable_extension "plpgsql"
 
   create_table "code_examples", force: :cascade do |t|
-    t.integer  "user_id",             null: false
-    t.string   "slug",                null: false
+    t.integer  "user_id",                            null: false
+    t.string   "slug",                               null: false
     t.string   "git"
     t.string   "name"
     t.string   "description"
     t.text     "content"
-    t.jsonb    "exloc_metadata"
-    t.jsonb    "repository_metadata"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.jsonb    "exloc_metadata",      default: "{}", null: false
+    t.jsonb    "repository_metadata", default: "{}", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["slug"], name: "index_code_examples_on_slug", unique: true, using: :btree
     t.index ["user_id"], name: "index_code_examples_on_user_id", using: :btree
   end
 
-  create_table "files", force: :cascade do |t|
-    t.integer "code_example_id", null: false
-    t.string  "name",            null: false
-    t.jsonb   "metadata"
-    t.index ["code_example_id"], name: "index_files_on_code_example_id", using: :btree
+  create_table "file_objects", force: :cascade do |t|
+    t.integer "code_example_id",                  null: false
+    t.string  "name",                             null: false
+    t.integer "size",            default: 0,      null: false
+    t.string  "file_type",       default: "file", null: false
+    t.string  "url"
+    t.index ["code_example_id"], name: "index_file_objects_on_code_example_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,7 +48,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.string   "email"
     t.string   "image"
     t.string   "location"
-    t.jsonb    "urls"
+    t.jsonb    "urls",       default: "[]",   null: false
     t.string   "token",                       null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false

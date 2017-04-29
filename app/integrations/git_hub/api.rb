@@ -7,7 +7,9 @@ module GitHub
         readme: "/repos/:owner/:repo/readme",
         repo: "/repos/:owner/:repo",
         files: "/repos/:owner/:repo/contents",
-        file: "/repos/:owner/:repo/contents/:file"
+        file: "/repos/:owner/:repo/contents/:file",
+        tarball: "/repos/:owner/:repo/tarball/master",
+        zipball: "/repos/:owner/:repo/zipball/master"
       }
 
       def get_attributes(path_name, options)

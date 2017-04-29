@@ -4,6 +4,13 @@
     <p>[<%= link_to "original repo", @ex.git %>]</p>
     <xmp id="ex-markdown-content" style="display:none;"><%= @ex.content %></xmp>
     <p id="ex-markup-content"></p>
+
+    <p>Files</p>
+    <ul>
+      <% @files.each do |file| %>
+        <li><%= link_to file.name, file.url %></li>
+      <% end %>
+    </ul>
   </div>
 </div>
 

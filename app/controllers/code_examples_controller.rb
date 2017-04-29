@@ -20,7 +20,20 @@ class CodeExamplesController < ApplicationController
   end
 
   def show
-    @ex = CodeExample.find_by(slug: params[:slug])
+    respond_to do |format|
+      format.html do
+        @ex = CodeExample.includes(:file_objects).find_by(slug: params[:slug])
+        @files = @ex.file_objects
+      end
+
+      # http://stackoverflow.com/a/33244464/2675670
+      # format.zip do
+      #   GitHub::API::get_attributes(:tarball, { owner: ex.owner, repo: ex.repo_name })
+      #   /repos/:owner/:repo/{tarball,zipball}/:ref
+      #   file_data = open(url)
+      #   send_data(file_data, type: file_data.content_type)
+      # end
+    end
   end
 
   private
