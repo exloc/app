@@ -20,6 +20,16 @@ module GitHub
       }
     end
 
+    def tarball_url
+      response = GitHub::API.new(:tarball, { owner: owner, repo: name }).get_response
+      response["Location"]
+    end
+
+    def zipball_url
+      response = GitHub::API.new(:zipball, { owner: owner, repo: name }).get_response
+      response["Location"]
+    end
+
     private
     def uri
       URI(url)
@@ -37,11 +47,11 @@ module GitHub
     end
 
     def data
-      @_data ||= GitHub::API::get_attributes(:repo, { owner: owner, repo: name })
+      @_data ||= GitHub::API.new(:repo, { owner: owner, repo: name }).get_attributes
     end
 
     def files
-      @_files ||= GitHub::API::get_attributes(:files, { owner: owner, repo: name })
+      @_files ||= GitHub::API.new(:files, { owner: owner, repo: name }).get_attributes
     end
 
     def filenames
@@ -59,7 +69,7 @@ module GitHub
     end
 
     def file_content(filename)
-      attrs = GitHub::API::get_attributes(:file, { owner: owner, repo: name, file: filename })
+      attrs = GitHub::API.new(:file, { owner: owner, repo: name, file: filename }).get_attributes
       Base64.decode64(attrs["content"])
     end
 

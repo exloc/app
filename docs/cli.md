@@ -30,6 +30,20 @@ $ curl --request GET \
     exloc.io/ex/slug.{json,zip,tar.gz,tar.bz2,rar,7z}
 ```
 
+Working commands:
+
+```no-highlight
+$ curl --request GET \
+    --location \  # follow redirects
+    http://localhost:3000/ex/radavis-github-card.tarball \
+    --output github-card.tar.gz
+
+$ curl --request GET \
+    --location \  # follow redirects
+    http://localhost:3000/ex/radavis-github-card.zip \
+    --output github-card.zip
+```
+
 Print server response status and body. `cd` into uncompressed repository.
 
 Probably fine to pick a single, widely supported compression method.

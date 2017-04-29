@@ -68,3 +68,16 @@ if ex.git_example? && ex.never_updated?
   ex.update_attributes = GitAPIObjectMap.new(api_object).to_code_example
 end
 ```
+
+
+## GET code example from CLI
+
+* pass url of file to client?
+* download file through exloc?
+  - file hosting?
+  - passthrough to github?
+
+
+## exloc bash-cli as an exloc
+
+Meta as hell. Create a cli in bash for exloc that you download and setup through exloc. People can duplicate this in other languages.

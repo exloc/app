@@ -13,6 +13,12 @@
   - is it a working example? (commands to execute example yield a positive result)
 * [ ] penalty for spamming useless examples in a short period of time
 * [ ] ratelimit submissions (5 per day, for example)
+* [ ] copy download exloc command to keyboard from webpage. only show to others for
+  users who have "trusted" submissions (admins, submissions w/ enough upvotes, userscore).
+* [ ] auto-execute an example based on a set of commands (in exloc.json)
+  - base installation (exloc to get started w/ a language -> docker image)
+  - 'run' and/or 'test' commands
+  - update exloc to be passing/failing
 * [x] add URL json field in code_examples table, for exloc.json and repo data
 * [x] no downvoting
 

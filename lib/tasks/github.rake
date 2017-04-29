@@ -1,4 +1,4 @@
-# require "open-uri"
+require "open-uri"
 
 namespace :github do
   desc "get public data for a user"

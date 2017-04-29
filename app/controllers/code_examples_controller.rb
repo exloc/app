@@ -20,16 +20,24 @@ class CodeExamplesController < ApplicationController
   end
 
   def show
+    @ex = CodeExample.includes(:file_objects).find_by(slug: params[:slug])
+
     respond_to do |format|
       format.html do
-        @ex = CodeExample.includes(:file_objects).find_by(slug: params[:slug])
         @files = @ex.file_objects
       end
 
+      format.tarball do
+        redirect_to GitHub::Repository.new(@ex.git).tarball_url
+      end
+
+      format.zip do
+        redirect_to GitHub::Repository.new(@ex.git).zipball_url
+      end
+
       # http://stackoverflow.com/a/33244464/2675670
-      # format.gz do
-      #   GitHub::API::path(:tarball, { owner: ex.owner, repo: ex.repo_name })
-      #   /repos/:owner/:repo/{tarball,zipball}/:ref
+      # format.tarball do
+      #   url = GitHub::Repository.new(@ex.git).tarball_url
       #   file_data = open(url)
       #   send_data(file_data, type: file_data.content_type)
       # end
