@@ -4,6 +4,12 @@ A community-driven problem solving resource.
 
 [Web App](https://exloc.io)
 
+## Documentation
+
+* [Manifesto](docs/manifesto.md)
+* [MVP](docs/mvp.md)
+* [Features](docs/features.md)
+
 ## Goals
 
 Create a centralized resource for code examples that are:

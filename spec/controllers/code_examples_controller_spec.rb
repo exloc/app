@@ -3,7 +3,7 @@ require "rails_helper"
 describe CodeExamplesController do
   let(:user) { create(:user) }
 
-  describe "GET /ex" do
+  xdescribe "GET /ex" do
 
   end
 
@@ -22,12 +22,14 @@ describe CodeExamplesController do
       expect(response.content_type).to eq("text/html")
     end
 
-    xit "supports the gzip representation of the code example" do
-    pending "not yet implemented"
-      get :show,
-        params: { slug: ex.slug, token: user.token },
-        headers: { "Content-Type" => "application/gzip" }
-      expect(response.content_type).to eq("application/gzip")
+    it "redirects to the .tarball" do
+      get :show, params: { slug: ex.slug, format: "tarball", token: user.token }
+      expect(response).to have_http_status(:redirect)
+    end
+
+    it "redirects to the .zip" do
+      get :show, params: { slug: ex.slug, format: "zip", token: user.token }
+      expect(response).to have_http_status(:redirect)
     end
   end
 
